@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <style>
+            .headers {
+                font-family: 'Verdana';
+                margin: 0;
+            }
+            .accent-color {
+                color:#FF6A00;
+            }
+        </style>   
+    </head>
+    <body>
+        <div id="growler">
+            <h2 v-once>{{appName}}</h2>
+            <h3 v-text="appName"></h3>
+            <h3 v-html="appName1"></h3>
+            <img alt="gro" v-bind:src="appLogo" style="height:36px" />
+            <img alt="gro" :src="appLogo" style="height:36px" />
+            <h3 v-bind:style="{color: color}">{{appName}}</h3>
+            <h3 v-bind:style="appStyle">{{appName}}</h3>
+            <h3 v-bind:style="[accentColor, headers]">{{appName}}</h3>
+            <h3 v-bind:class="[accentColor1, headers1]">{{appName}}</h3>
+            <h3 v-bind:class="headerStyles">{{appName}}</h3>
+            <h3 v-bind:class="{'headers': true, 'accent-color': isOnline }">{{appName}}</h3>
+        </div>
+        <script src="https://unpkg.com/vue"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            var growler = new Vue({
+                el: '#growler',
+                data: {
+                    appName: 'Growler',
+                    appName1: '<a href="http://1.com">2.com</a>',
+                    appLogo: 'https://vuejs.org/images/logo.png',
+                    color: '#FF6A00',
+                    appStyle: {
+                        color: '#FF6A00',
+                        fontFamily: 'Verdana',
+                        margin: 0
+                    },
+                    accentColor: {
+                        color: '#FF6A00'
+                    },
+                    headers: {
+                        fontFamily: 'Verdana',
+                        margin: 0
+                    },
+                    accentColor1: 'accent-color',
+                    headers1: 'headers',
+                    headerStyles: [
+                        'accent-color',
+                        'headers'
+                    ],
+                    isOnline: false
+                }
+            });
+        </script>
+    </body>
+</html>
